@@ -55,6 +55,53 @@ VALUES
 SELECT * FROM User;
 SELECT * FROM order_table;
 SELECT * FROM payment;
+USE training;
+SET SQL_SAFE_UPDATES=0;
 /* perform update on DB 
+UPDATE User
+SET  name = "Vikrant"
+WHERE name = "Rana";
+SELECT * FROM User;
 
-/*perform delete on DB 
+/*perform delete on DB
+DELETE FROM payment
+WHERE user_id = 4;
+
+DELETE FROM order_table
+WHERE user_id = 4;
+
+DELETE FROM User
+WHERE id = 4;
+
+
+
+USE training;
+
+
+CREATE TABLE category (
+    id INT PRIMARY KEY,
+    category_name VARCHAR(100)
+);
+
+INSERT INTO category (id, category_name)
+VALUES 
+     (1, 'Electronics'),
+     (2, 'Books'),
+     (3, 'Fashion'),
+     (4, 'Home'),
+     (5, 'Woods');
+
+
+ALTER TABLE order_table
+ADD COLUMN category_id INT;
+
+ALTER TABLE order_table
+ADD FOREIGN KEY (category_id) REFERENCES category(id);
+
+ALTER TABLE order_table
+DROP COLUMN category;
+SELECT * FROM order_table;
+
+
+     
+
